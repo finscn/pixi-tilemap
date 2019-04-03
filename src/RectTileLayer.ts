@@ -209,7 +209,11 @@ namespace pixi_tilemap {
             tile.bindTextures(renderer, shader, textures);
 
             //lost context! recover!
-            var vb = tile.getVb(this.vbId);
+
+            // TODO: Don't call `getVb()` , avoid run `checkLeaks & removeVb` automatically
+            // var vb = tile.getVb(this.vbId);
+            var vb = tile.vbs[this.vbId];
+
             if (!vb) {
                 vb = tile.createVb();
                 this.vbId = vb.id;

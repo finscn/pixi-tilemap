@@ -224,6 +224,10 @@ namespace pixi_tilemap {
 
         destroy() {
             super.destroy();
+            for (let id in this.vbs) {
+                this.removeVb(id);
+            }
+            this.vbs = null;
             this.rectShader.destroy();
             this.rectShader = null;
         }
